@@ -1,0 +1,33 @@
+<h1 style="display: inline">
+  {{ device.name }}
+  <span style="font-weight: lighter; font-size: small">{{ device.deviceTypeId }}</span>
+</h1>
+
+<div class="grid mt-3" style="border-style: solid">
+  <div class="grid col-12 p-0 m-0">
+    <p class="col-8">Failsafe</p>
+    <p class="col-4">{{ device.failsafe ? 'Ja' : 'Nein' }}</p>
+  </div>
+  <div class="grid col-12 p-0 m-0">
+    <p class="col-8">Temperatur</p>
+    <p class="col-4">{{ device.tempMin }} - {{ device.tempMax }} °C</p>
+  </div>
+  <div class="grid col-12 p-0 m-0">
+    <p class="col-8">Einbauposition</p>
+    <p class="col-4">
+      {{ device.installationPosition === 'vertical' ? 'Vertikal' : 'Horizontal' }}
+    </p>
+  </div>
+  <div class="grid col-12 p-0 m-0">
+    <p class="col-8">Geeignet für 19" Schrank</p>
+    <p class="col-4">{{ device.insertInto19InchCabinet ? 'Ja' : 'Nein' }}</p>
+  </div>
+  <div *ngIf="device.terminalElement" class="grid col-12 p-0 m-0">
+    <p class="col-8">Terminal vorhanden</p>
+    <p class="col-4">{{ device.terminalElement ? 'Ja' : 'Nein' }}</p>
+  </div>
+  <div *ngIf="device.advancedEnvironmentalConditions" class="grid col-12 p-0 m-0">
+    <p class="col-8">Erweiterte Umgebungsbedingungen</p>
+    <p class="col-4">{{ device.advancedEnvironmentalConditions ? 'Ja' : 'Nein' }}</p>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<p-dataView [value]="devices" layout="grid">
+  <ng-template let-device pTemplate="gridItem">
+    <div class="col-3 pr-1 mb-1">
+      <p-card [style]="{ cursor: 'pointer' }" (click)="onSelect(device)">
+        <div class="grid">
+          <div class="col-10">
+            <p class="mb-0">{{ device.name }}</p>
+            <p class="mt-0" style="font-weight: lighter; font-size: smaller">
+              {{ device.deviceTypeId }}
+            </p>
+            <p>
+              Failsafe:
+              <i
+                [ngClass]="device.failsafe ? 'pi pi-check' : 'pi pi-times'"
+                [ngStyle]="{ color: device.failsafe ? 'green' : 'red' }"
+              ></i>
+            </p>
+          </div>
+          <div class="col-2 ml-auto">
+            <button
+              pButton
+              type="button"
+              icon="pi pi-trash"
+              class="p-button-rounded p-button-text p-button-danger"
+              (click)="onDeleteDevice(device.id, $event)"
+            ></button>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="empty"> Keine Geräte gefunden. </ng-template>
+</p-dataView>
